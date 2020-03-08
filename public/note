@@ -1,0 +1,35 @@
+//////.htaccess
+
+//  　<IfModule mod_rewrite.c>
+//      this is enables the mod_rewrite 
+//      however it is enabled by default
+//    Options -Multiviews
+//      disabled, since it has '-' in it
+//      this avoid the confusion for example 
+//      /test or /test.php
+//    RewriteBase /firstmvc/public
+//      this tells the server the actual root directry
+//    RewriteCond %{REQUEST_FILENAME} !-d
+//    RewriteCond %{REQUEST_FILENAME} !-f
+//      this tells that when the file is requested 
+//      it will request through the following RewriteRule↓↓
+//    RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+//      this means the every request will be done through
+//      index.php file
+//      Thus, if the file was not found it will automatically 
+//      rout to the index.php file
+//      Also 'url=$1' means to hold url value, '$1'
+//      doing this will allow for example,,
+//      instead of entering '/public?url=post' in the url bar
+//      '/public/post' will be valid url to rout to the same file
+
+
+//////index.php
+
+//    require_once '../app/bootstrap.php'
+//      in many file there are many format that might be required to include 
+//      Thus it is important to sum up the required files 
+//      connected to one file and inculed that one file 
+//      in this case, we connected all the required file 
+//      into bootstrp.php file and include that file onece 
+//      using 'require_once' statement

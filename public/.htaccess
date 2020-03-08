@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+  Options -Multiviews
+  RewriteEngine On
+  RewriteBase /firstmvc/public
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+#  　<IfModule mod_rewrite.c>
+#      this is enables the mod_rewrite 
+#      however it is enabled by default
+#    Options -Multiviews
+#      disabled, since it has '-' in it
+#      this avoid the confusion for example 
+#      /test or /test.php
+#    RewriteBase /firstmvc/public
+#      this tells the server the actual root directry
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#      this tells that when the file is requested 
+#      it will request through the following RewriteRule↓↓
+#    RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+#      this means the every request will be done through
+#      index.php file
+#      Thus, if the file was not found it will automatically 
+#      rout to the index.php file
+#      Also 'url=$1' means to hold url value, '$1'
+#      doing this will allow for example,,
+#      instead of entering '/public?url=post' in the url bar
+#      '/public/post' will be valid url to rout to the same file
+#       |"basically means that if the request is done that matches ^(.+)$ (matches any URL except the server root), 
+#       |it will be rewritten as index.php?url=$1, which means a request for olle will be rewritten as index.php?url=olle)."
+#       |"QSA means that if there's a query string passed with the original URL, 
+#       |it will be appended to the rewrite (olle?p=1 will be rewritten as index.php?url=olle&p=1."
+#       |explanation from (https://stackoverflow.com/questions/12551382/what-does-1-qsa-l-mean-in-my-htaccess-file/45226969)

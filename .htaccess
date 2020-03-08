@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteRule ^$ public/ [L]
+  RewriteRule (.*) public/$1 [L]
+</IfModule>
+
+#this will direct all file to /public/index.php
+#without writing /public/ each time in the url

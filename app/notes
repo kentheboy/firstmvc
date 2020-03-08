@@ -1,0 +1,4 @@
+//////.htaccess
+
+//  　by stating "-Indexes" it will forbide the access
+//  　by stating "+Indexes" it will allow the access(default)
